@@ -31,7 +31,60 @@
                 android:id="@+id/frg_menu_category"
                 android:name="com.redline.shop.Interface.Fragment.CategoryFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent">
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_delivery"/>
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_credit_card"/>
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_work"/>
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_video"/>
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_actions"/>
+
+                <ImageButton
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/BtnTint"
+                    android:src="@drawable/ic_contact"/>
+
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

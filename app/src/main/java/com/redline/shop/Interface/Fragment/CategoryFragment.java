@@ -1,9 +1,18 @@
 package com.redline.shop.Interface.Fragment;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import com.redline.shop.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,27 +24,31 @@ public class CategoryFragment extends BaseListFragment {
 
     @Override
     protected ListAdapter setAdapters() {
-        ArrayList<HashMap<String, String>> myArrList = new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> map;
+       return new MenuAdapter(getContext(), R.layout.cell_menu_category, new String[] {"Ламинат", "Паркет"});
 
-// Досье на первого кота
-        map = new HashMap<String, String>();
-        map.put("Name", "Мурзик");
-        map.put("Tel", "495 501-3545");
-        myArrList.add(map);
+    }
 
-        Log.e("LIST", "setAdapter");
-//        return null;
-        return new SimpleAdapter(getActivity(), myArrList, android.R.layout.simple_list_item_2,
-                new String[] {"Name", "Tel"},
-                new int[] {android.R.id.text1, android.R.id.text2});
-//        return new ArrayAdapter<String>(getContext(),
-//                android.R.layout.simple_list_item_1, demo) {
+    private class MenuAdapter extends ArrayAdapter<String> {
 
-//        };
+        public MenuAdapter(Context context, int resource, String[] objects) {
+            super(context, resource, objects);
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null)
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.cell_menu_category, parent, false);
 
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            ImageView image = (ImageView) convertView.findViewById(R.id.iv_image);
+            TextView label = (TextView) convertView.findViewById(R.id.tv_label);
 
+            if (position == 0)
+                image.setImageDrawable(getResources().getDrawable(R.drawable.laminat));
+            else
+                image.setImageDrawable(getResources().getDrawable(R.drawable.parket));
+
+            label.setText(getItem(position));
+            return convertView;
+        }
     }
 
     @Override

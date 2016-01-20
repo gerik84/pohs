@@ -14,7 +14,11 @@ android {
         versionName "1.0"
         buildConfigField "String", "API_KEY", "\"Basic cGF2ZWwuYXNkZXZlbEBnbWFpbC5jb206MGMxajVvNDdaMzUxRzgwOEdRNThkSDFJM0xBTzgydG4=\""
         buildConfigField "String", "BASE_URL", "\"" + BASE_URL + "\""
-        buildConfigField "String", "API_URL", "\"" + BASE_URL +"api/" + "\""
+        buildConfigField "String", "API_URL", "\"" + BASE_URL + "api/" + "\""
+
+        buildConfigField "String", "FONT_REGULAR", "\"Roboto-Regular.ttf\""
+        buildConfigField "String", "FONT_BOLD", "\"Roboto-Bold.ttf\""
+        buildConfigField "String", "FONT_LIGHT", "\"Roboto-Light.ttf\""
     }
 
     buildTypes {
@@ -23,6 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {

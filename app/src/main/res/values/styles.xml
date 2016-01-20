@@ -14,4 +14,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BtnTint">
+        <item name="android:padding">10dp</item>
+        <item name="android:tint">@color/colorSecondaryText</item>
+        <item name="android:background">@drawable/bg_btn_tint</item>
+    </style>
+
 </resources>
