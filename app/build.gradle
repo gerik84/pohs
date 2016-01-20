@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+
+def BASE_URL = "http://parketelit.ru/"
+
+android {
+    compileSdkVersion ANDROID_BUILD_SDK_VERSION
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.redline.shop"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "API_KEY", "\"Basic cGF2ZWwuYXNkZXZlbEBnbWFpbC5jb206MGMxajVvNDdaMzUxRzgwOEdRNThkSDFJM0xBTzgydG4=\""
+        buildConfigField "String", "BASE_URL", "\"" + BASE_URL + "\""
+        buildConfigField "String", "API_URL", "\"" + BASE_URL +"api/" + "\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile project(':cachelib')
+}
