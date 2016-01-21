@@ -16,9 +16,6 @@ android {
         buildConfigField "String", "BASE_URL", "\"" + BASE_URL + "\""
         buildConfigField "String", "API_URL", "\"" + BASE_URL + "api/" + "\""
 
-        buildConfigField "String", "FONT_REGULAR", "\"Roboto-Regular.ttf\""
-        buildConfigField "String", "FONT_BOLD", "\"Roboto-Bold.ttf\""
-        buildConfigField "String", "FONT_LIGHT", "\"Roboto-Light.ttf\""
     }
 
     buildTypes {

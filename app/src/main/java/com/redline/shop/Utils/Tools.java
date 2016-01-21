@@ -1506,7 +1506,4 @@ public class Tools {
         }
     }
 
-    public static String getFontRegular() {
-        return BuildConfig.FONT_REGULAR;
-    }
 }

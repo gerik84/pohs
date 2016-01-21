@@ -22,12 +22,18 @@ public class FontTextView extends TextView {
                 R.styleable.FontTextView, 0, 0);
         String font = a.getString(R.styleable.FontTextView_font);
 
-        if (font == null || font.length() < 1)
-            font = Tools.getFontRegular();
+        try {
+            if (font == null || font.length() < 1)
+                font = getResources().getString(R.string.font_regular);
 
-        Typeface fontFace = Typeface.createFromAsset(context.getAssets(), "fonts/" + font);
-        this.setTypeface(fontFace);
-        a.recycle();
+            Typeface fontFace = Typeface.createFromAsset(context.getAssets(), "fonts/" + font);
+            this.setTypeface(fontFace);
+        } catch (Exception e) {
+            Tools.log(e);
+
+        } finally {
+            a.recycle();
+        }
     }
 
 

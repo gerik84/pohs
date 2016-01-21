@@ -8,14 +8,15 @@
 
     <ImageView
         android:id="@+id/iv_image"
-        android:layout_width="48dp"
-        android:layout_height="48dp" />
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="centerCrop"/>
 
     <com.redline.shop.Interface.View.FontTextView
         android:id="@+id/tv_label"
-        android:textColor="#212121"
+        android:textColor="@color/colorPrimaryText"
         android:layout_marginLeft="10dp"
-        android:text="asdasd"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
