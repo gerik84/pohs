@@ -50,6 +50,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.redline.shop.BuildConfig;
+import com.redline.shop.Interface.HandlerBaseURL;
+import com.redline.shop.Interface.HandlerParketUrl;
 import com.redline.shop.R;
 
 import org.json.JSONException;
@@ -63,6 +65,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -699,7 +703,7 @@ public class Tools {
     }
 
     /*public static void updateText(TextView tv, String colName, Cursor cursor)
-	{
+    {
         if (tv == null)
         {
             return;
@@ -1504,6 +1508,32 @@ public class Tools {
         } else {
             view.setBackground(bg);
         }
+    }
+
+//    public static HandlerParketUrl getHadlerUrl() {
+//        String className = BuildConfig.HANDLER_URL;
+//
+//        if (className == null)
+//            throw new NullPointerException("not data url handler");
+//
+//        HandlerParketUrl handler = null;
+//        try {
+//            handler = (HandlerParketUrl) Class.forName(className).newInstance();
+//            return handler;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        throw new NullPointerException("not data url handler");
+//
+//    }
+
+    public static String getApiUrl() {
+        return BuildConfig.API_URL ;
+    }
+
+    public static String getApiKey() {
+        return BuildConfig.API_KEY ;
     }
 
 }

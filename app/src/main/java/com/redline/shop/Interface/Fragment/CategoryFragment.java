@@ -12,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.redline.shop.Interface.Adapters.CategoryAdapter;
 import com.redline.shop.R;
 
 import java.util.ArrayList;
@@ -24,7 +25,9 @@ public class CategoryFragment extends BaseListFragment {
 
     @Override
     protected ListAdapter setAdapters() {
-       return new MenuAdapter(getContext(), R.layout.cell_menu_category, new String[] {"Ламинат", "Паркет"});
+        return new CategoryAdapter(getActivity(), null, null, false)
+                .setResourceId(R.layout.cell_menu_category);
+//       return new MenuAdapter(getContext(), R.layout.cell_menu_category, new String[] {"Ламинат", "Паркет"});
 
     }
 
