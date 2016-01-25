@@ -1,29 +1,30 @@
 package com.redline.shop.Interface.Fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.redline.shop.Interface.Adapters.AdapterFactory;
-import com.redline.shop.Interface.Common.PathItemHolder;
+import com.redline.shop.Interface.Adapters.CategoryAdapter;
 import com.redline.shop.R;
-
-import java.util.HashSet;
 
 /**
  * Created by Pavel on 19.01.2016.
  */
 public abstract class BaseListFragment extends BaseFragment implements AdapterFactory.Listener {
 
-    public enum MODE {
-        CATALOG, COMMENTS, INFO
+    @Override
+    public void onLoadComplete() {
+//        View root = getView();
+//        if (root == null)
+//            return;
+//
+//        View progress = root.findViewById(R.id.fr_loading);
+//        if (progress != null)
+//            progress.setVisibility(View.GONE);
     }
 
     @Override
@@ -31,77 +32,32 @@ public abstract class BaseListFragment extends BaseFragment implements AdapterFa
         return R.layout.frg_list;
     }
 
+    private   ViewPager                        m_pager;
+
     @Override
     protected void initView(View root) {
 
         if (root == null)
             return;
 
+        ListAdapter a = AdapterFactory.getAdapterInstance(getActivity(), AdapterFactory.MODE.CATALOG, this);
+
+      
         ListView listView = (ListView) root.findViewById(R.id.lv_list);
-        if (listView != null) {
-            listView.setAdapter(setAdapters());
+        if (listView != null && a != null) {
+            View progress = root.findViewById(R.id.fr_loading);
+            if (progress != null) {
+                //progress.setVisibility(View.VISIBLE);
+                listView.setEmptyView(progress);
+            }
+            listView.setAdapter(a);
             listView.setOnItemClickListener(setListener());
         }
 
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = super.onCreateView(inflater, container, savedInstanceState);
-
-        Holder h = _h();
-        h.adapterFactory = AdapterFactory.createAdapterFactory(getActivity(), this, h.pathItemHolder);
-        return root;
-    }
-
-    protected Holder _h() {
-
-        if (m_holder == null) m_holder = new Holder();
-        return m_holder;
-    }
-
-    private Holder m_holder = null;
-
-    public interface ListenerFactory {
-
-        Listener getListener(FragmentCatalogPageBase p);
-    }
-
-    public interface Listener {
-
-        void onFavoritesClicked();
-        void onMapLinkClicked(PathItem pathItem, HashSet<Integer> areasLinked);
-        void onItemSelected(PathItem pathItem);
-    }
-
-    protected static class Holder {
-
-        protected PathItemHolder pathItemHolder = new PathItemHolder();
-        protected AdapterFactory adapterFactory;
-        protected ListenerFactory factory;
-
-        protected boolean bSkipLoading;
-        protected View root;
-
-        protected int position = -1;
-
-        protected RefreshMenuHandler refreshMenuHandler;
-        protected Menu menu;
-
-        FavoritesProcessor favoritesProcessor;
-    }
-
-    protected ListView getListView() {
-        View root = getView();
-        if (root == null)
-            return null;
-
-        return (ListView) root.findViewById(R.id.lv_list);
-
-    }
-
-    protected abstract ListAdapter setAdapters();
+//    protected abstract ListAdapter setAdapters();
 
     protected abstract AdapterView.OnItemClickListener setListener();
+
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.asdevel.cache.jsondb.AbstractCachedJsonArrayAdapter;
 import com.asdevel.cache.jsondb.JsonCacheDbHelper;
+import com.redline.shop.BuildConfig;
 import com.redline.shop.Utils.Tools;
 
 import java.lang.reflect.Method;
@@ -21,8 +22,8 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
     protected Integer mResourceId = null;
     protected Context mContext;
 
-    public ShopAuthorizationAbstractAdapter(Context ctx, String itemIDKey, IRetrieverHandler handler, boolean bDebugMode) {
-        super(ctx, itemIDKey, null, handler, bDebugMode);
+    public ShopAuthorizationAbstractAdapter(Context ctx, String itemIDKey, IRetrieverHandler handler) {
+        super(ctx, itemIDKey, null, handler, BuildConfig.DEBUG);
         mContext = ctx;
         setUrl(setRequestUrl(), false);
         Tools.log(setRequestUrl());
@@ -64,12 +65,6 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
     @Override
     public String[] getOrderByField() {
         return new String[] {"category_id"};
-    }
-
-    @Override
-    public synchronized void onRetrieverStarted(boolean started) {
-        super.onRetrieverStarted(started);
-
     }
 
     @Override

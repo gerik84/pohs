@@ -9,7 +9,7 @@
         android:divider="@null"
         android:dividerHeight="0dp"
         android:drawSelectorOnTop="false"
-        android:visibility="gone"
+        android:visibility="visible"
         android:listSelector="@drawable/bg_list_item_act"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

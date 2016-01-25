@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.redline.shop.Interface.Fragment.CategoryFragment;
+import com.redline.shop.Interface.Fragment.FragmentCatalogPage;
 import com.redline.shop.R;
 
 public class MainActivity extends AppCompatActivity
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        getSupportFragmentManager().beginTransaction().add(R.id.frg_menu_category, new CategoryFragment()).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.stub, new FragmentCatalogPage()).commit();
 
     }
 

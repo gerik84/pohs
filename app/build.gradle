@@ -17,7 +17,7 @@ android {
         buildConfigField "String", "BASE_URL", "\"" + BASE_URL + "\""
         buildConfigField "String", "API_URL", "\"" + BASE_URL + "api/" + "\""
 
-        buildConfigField 'Class<? extends com.redline.shop.ClassProvider>', CLASS_PROVIDER, 'com.redline.shop.ClassProvider.class'
+//        buildConfigField 'Class<? extends com.redline.shop.ClassProvider>', CLASS_PROVIDER, 'com.redline.shop.ClassProvider.class'
 
     }
 

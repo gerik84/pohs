@@ -12,15 +12,27 @@ import android.view.ViewGroup;
  */
 public abstract class BaseFragment extends Fragment {
 
+    protected Holder m_holder;
+
     protected abstract int setResourceId();
 
     protected abstract void initView(View root);
+
+    public Holder getHolder() {
+        return m_holder;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(setResourceId(), container, false);
+
+
         initView(root);
         return root;
+    }
+
+    public class Holder {
+
     }
 }

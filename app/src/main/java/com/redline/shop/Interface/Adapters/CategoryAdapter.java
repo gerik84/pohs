@@ -1,6 +1,7 @@
 package com.redline.shop.Interface.Adapters;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 import android.view.View;
@@ -23,8 +24,8 @@ import java.util.HashMap;
 public class CategoryAdapter extends ShopAuthorizationAbstractAdapter {
 
 
-    public CategoryAdapter(Context ctx, String itemIDKey, IRetrieverHandler handler, boolean bDebugMode) {
-        super(ctx, itemIDKey, handler, bDebugMode);
+    public CategoryAdapter(Context ctx, String itemIDKey, IRetrieverHandler handler) {
+        super(ctx, itemIDKey, handler);
     }
 
     @Override
@@ -52,6 +53,11 @@ public class CategoryAdapter extends ShopAuthorizationAbstractAdapter {
         /* ... */
         }
         return out.toString();
+    }
+
+    @Override
+    public void installNewCursor(Cursor new_cursor, String curUrl) {
+        super.installNewCursor(new_cursor, curUrl);
     }
 
     @Override
