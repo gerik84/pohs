@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 def BASE_URL = "http://parketelit.ru/"
+def CLASS_PROVIDER = 'CLASS_PROVIDER'
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION
@@ -15,6 +16,8 @@ android {
         buildConfigField "String", "API_KEY", "\"Basic cGF2ZWwuYXNkZXZlbEBnbWFpbC5jb206MGMxajVvNDdaMzUxRzgwOEdRNThkSDFJM0xBTzgydG4=\""
         buildConfigField "String", "BASE_URL", "\"" + BASE_URL + "\""
         buildConfigField "String", "API_URL", "\"" + BASE_URL + "api/" + "\""
+
+        buildConfigField 'Class<? extends com.redline.shop.ClassProvider>', CLASS_PROVIDER, 'com.redline.shop.ClassProvider.class'
 
     }
 
@@ -34,9 +37,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile project(':cachelib')
+    compile files('libs/android-query-full.0.26.8.jar')
 }

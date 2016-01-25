@@ -89,7 +89,7 @@ public class CategoryAdapter extends ShopAuthorizationAbstractAdapter {
         }
         reader.endObject();
 
-        return false;
+        return true;
     }
 
     @Override

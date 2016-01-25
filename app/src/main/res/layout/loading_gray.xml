@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/fr_loading"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:layout_gravity="center"
+		android:orientation="vertical"
+		android:gravity="center"
+		>
+
+	<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/Activity.Large.Gray"
+			/>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/please_wait"
+			style="@style/TextAppearance.Panel.Text"
+			android:layout_marginTop="@dimen/padding8"
+			/>
+
+</LinearLayout>
+

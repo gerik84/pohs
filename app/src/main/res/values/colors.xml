@@ -15,4 +15,16 @@
     <color name="transparent">@android:color/transparent</color>
     <color name="white">@android:color/white</color>
 
+    <color name="gray">@color/colorSecondaryText</color>
+    <color name="gray_transparent">#00767676</color>
+
+    <color name="spinner_gray">@color/gray</color>
+    <color name="spinner_gray_transparent">@color/gray_transparent</color>
+
+    <color name="theme_color_highlight_transparent">@color/colorAccent</color>
+    <color name="theme_color_transparent">@color/colorPrimary</color>
+
+    <color name="spinner_theme_color_transparent">@color/theme_color_highlight_transparent</color>
+    <color name="spinner_theme_color">@color/colorPrimaryDark</color>
+
 </resources>

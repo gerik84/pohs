@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.androidquery.AQuery;
 import com.asdevel.cache.jsondb.AbstractCachedJsonArrayAdapter;
 import com.asdevel.cache.jsondb.JsonCacheDbHelper;
 import com.redline.shop.Utils.Tools;
@@ -63,6 +64,12 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
     @Override
     public String[] getOrderByField() {
         return new String[] {"category_id"};
+    }
+
+    @Override
+    public synchronized void onRetrieverStarted(boolean started) {
+        super.onRetrieverStarted(started);
+
     }
 
     @Override

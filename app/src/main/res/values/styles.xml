@@ -20,4 +20,35 @@
         <item name="android:background">@drawable/bg_btn_tint</item>
     </style>
 
+    <style name="Activity.Large" parent="android:Widget.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@drawable/activity_spinner_themecolor</item>
+        <item name="android:minWidth">76dp</item>
+        <item name="android:maxWidth">76dp</item>
+        <item name="android:minHeight">76dp</item>
+        <item name="android:maxHeight">76dp</item>
+    </style>
+
+    <style name="Activity.Large.Gray" parent="Activity.Large">
+        <item name="android:indeterminateDrawable">@drawable/activity_spinner_gray</item>
+    </style>
+
+
+    <style name="TextAppearance.Thin" parent="@android:TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <!--<item name="fontName">HelveticaNeueLight.ttf</item>-->
+    </style>
+
+    <style name="TextAppearance.Thin.Medium" parent="TextAppearance.Thin">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Thin.Medium.Gray" parent="TextAppearance.Thin.Medium">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="TextAppearance.Dialog.Text" parent="TextAppearance.Thin.Medium.Gray"/>
+
+    <style name="TextAppearance.Panel.Text" parent="TextAppearance.Dialog.Text">
+    </style>
+
 </resources>
