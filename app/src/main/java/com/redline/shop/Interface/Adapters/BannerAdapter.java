@@ -29,6 +29,8 @@ public class BannerAdapter extends TestAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        
+
 
 
 
