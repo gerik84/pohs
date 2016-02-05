@@ -45,6 +45,11 @@ public class CategoryFragment extends BaseListFragment {
     }
 
     @Override
+    protected ListAdapter setAdapters() {
+        return null;
+    }
+
+    @Override
     protected AdapterView.OnItemClickListener setListener() {
         return null;
     }

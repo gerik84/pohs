@@ -43,4 +43,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile project(':cachelib')
     compile files('libs/android-query-full.0.26.8.jar')
+    compile project(':viewPagerIndicator')
 }

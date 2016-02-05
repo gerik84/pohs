@@ -110,7 +110,12 @@ public class CategoryAdapter extends ShopAuthorizationAbstractAdapter {
         else
             image.setImageDrawable(Tools.getResources().getDrawable(R.drawable.parket));
 
-        label.setText(m_cursor.getString(m_cursor.getColumnIndex("category")));
+        try {
+
+            label.setText(m_cursor.getString(m_cursor.getColumnIndex("category")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return root;
     }

@@ -1,1 +1,1 @@
-include ':app', ':cachelib'
+include ':app', ':cachelib', ':viewPagerIndicator'

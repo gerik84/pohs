@@ -3,6 +3,8 @@ package com.redline.shop.Interface.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,12 +15,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.redline.shop.Interface.Common.ARG;
 import com.redline.shop.Interface.Fragment.CategoryFragment;
-import com.redline.shop.Interface.Fragment.FragmentCatalogPage;
+import com.redline.shop.Interface.Fragment.MainFragment;
 import com.redline.shop.R;
+
+import static com.redline.shop.Interface.Common.ARG.FRAGMENT.MAIN;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static MainActivity s_instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 //        getSupportFragmentManager().beginTransaction().add(R.id.stub, new FragmentCatalogPage()).commit();
+
 
     }
 
@@ -79,6 +87,56 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        s_instance = null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        s_instance = this;
+        switchFragment(MAIN);
+
+    }
+
+    public static MainActivity getInstance() {
+        return s_instance;
+    }
+
+    public void switchFragment(ARG.FRAGMENT frg_type) {
+
+        Fragment f = null;
+        switch (frg_type) {
+            case MAIN: {
+                f = new MainFragment();
+            }
+            break;
+        }
+
+        if (f != null)
+            replaceFragment(f, null);
+
+    }
+
+    private void replaceFragment(Fragment fragment, Bundle args) {
+
+        if (s_instance == null || fragment == null)
+            throw new NullPointerException();
+
+        FragmentManager fm = s_instance.getSupportFragmentManager();
+        Fragment currentFragment = fm.findFragmentById(R.id.container);
+
+        if (currentFragment != null && currentFragment.getClass() == fragment.getClass())
+            return;
+
+        fm.beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(fragment.getClass().getCanonicalName())
+                .commit();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

@@ -7,6 +7,10 @@ import android.widget.ListAdapter;
 public class FragmentCatalogPage extends BaseListFragment {
 
 
+    @Override
+    protected ListAdapter setAdapters() {
+        return null;
+    }
 
     @Override
     protected AdapterView.OnItemClickListener setListener() {

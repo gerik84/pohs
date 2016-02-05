@@ -56,7 +56,7 @@ public abstract class BaseListFragment extends BaseFragment implements AdapterFa
 
     }
 
-//    protected abstract ListAdapter setAdapters();
+    protected abstract ListAdapter setAdapters();
 
     protected abstract AdapterView.OnItemClickListener setListener();
 
