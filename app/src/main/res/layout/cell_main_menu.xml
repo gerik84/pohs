@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_parket_work"/>
+
+        <com.redline.shop.Interface.View.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/parket_work"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/iv_work" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_callback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_callback"/>
+
+        <com.redline.shop.Interface.View.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/callback"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/iv_callback" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_map"/>
+
+        <com.redline.shop.Interface.View.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/we_map"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/iv_map" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_all_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_category"/>
+
+        <com.redline.shop.Interface.View.FontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/all_category"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/iv_all_category" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

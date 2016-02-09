@@ -15,7 +15,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-
-        android:layout_marginBottom="@dimen/padding12" />
+        android:visibility="gone"
+        app:fillColor="@color/colorAccent"
+        android:layout_marginBottom="@dimen/padding8" />
 
 </RelativeLayout>

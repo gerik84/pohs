@@ -6,6 +6,7 @@
     <ListView
         android:id="@+id/lv_list"
         android:choiceMode="singleChoice"
+        android:scrollbars="vertical"
         android:divider="@null"
         android:dividerHeight="0dp"
         android:drawSelectorOnTop="false"

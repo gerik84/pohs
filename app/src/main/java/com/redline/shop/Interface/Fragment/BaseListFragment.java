@@ -1,6 +1,7 @@
 package com.redline.shop.Interface.Fragment;
 
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -14,18 +15,7 @@ import com.redline.shop.R;
 /**
  * Created by Pavel on 19.01.2016.
  */
-public abstract class BaseListFragment extends BaseFragment implements AdapterFactory.Listener {
-
-    @Override
-    public void onLoadComplete() {
-//        View root = getView();
-//        if (root == null)
-//            return;
-//
-//        View progress = root.findViewById(R.id.fr_loading);
-//        if (progress != null)
-//            progress.setVisibility(View.GONE);
-    }
+public abstract class BaseListFragment extends BaseFragment {
 
     @Override
     protected int setResourceId() {
@@ -40,18 +30,17 @@ public abstract class BaseListFragment extends BaseFragment implements AdapterFa
         if (root == null)
             return;
 
-        ListAdapter a = AdapterFactory.getAdapterInstance(getActivity(), AdapterFactory.MODE.CATALOG, this);
+        ListAdapter a = setAdapters();
 
-      
+
         ListView listView = (ListView) root.findViewById(R.id.lv_list);
         if (listView != null && a != null) {
             View progress = root.findViewById(R.id.fr_loading);
             if (progress != null) {
-                //progress.setVisibility(View.VISIBLE);
+                progress.setVisibility(View.VISIBLE);
                 listView.setEmptyView(progress);
             }
             listView.setAdapter(a);
-            listView.setOnItemClickListener(setListener());
         }
 
     }

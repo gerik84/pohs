@@ -13,4 +13,11 @@
 
 
     <string name="please_wait">Пожалуйста подождите…</string>
+
+
+    <string name="all_category">Все\nкатегории</string>
+    <string name="we_map">Мы\nна карте</string>
+    <string name="callback">Заказать\nзвонок</string>
+    <string name="parket_work">Паркетные\nработы</string>
+
 </resources>

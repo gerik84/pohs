@@ -1,6 +1,7 @@
 package com.redline.shop.Interface.View;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,15 +18,23 @@ import com.redline.shop.Utils.AQueryHelper;
 import com.redline.shop.Utils.Tools;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoScrollViewPager extends RelativeLayout {
 
+    public enum MODE {
+        ASYNC,
+        SYNC
+    }
     private List<String> mListImage;
     private Handler handler = new Handler();
     Runnable runnable;
     private final int DELAY = 5000;
+    private MODE m_mode = MODE.ASYNC;
+
 
     public AutoScrollViewPager(Context context) {
         super(context);
@@ -46,7 +55,7 @@ public class AutoScrollViewPager extends RelativeLayout {
         try {
             pager = getPager();
             mIndicator = getPagerIndicator();
-            mAdapter = new PlaceSlidesFragmentAdapter(mListImage);
+            mAdapter = new PlaceSlidesFragmentAdapter(mListImage, MODE.SYNC);
             if (pager != null) {
                 runnable = new Runnable() {
                     public void run() {
@@ -84,6 +93,10 @@ public class AutoScrollViewPager extends RelativeLayout {
         }
     }
 
+    public void setMode(MODE mode) {
+        m_mode = mode;
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
@@ -114,25 +127,62 @@ public class AutoScrollViewPager extends RelativeLayout {
         setImageUrl(m_urls);
     }
 
+    public List<String> getImages() {
+        return m_urls;
+    }
+
     public void setImageUrl(List<String> listImage) {
-        for (int i = 0; i < listImage.size(); i++) {
-            ImageView image = new ImageView(Tools.getApplicationContext());
-            final AQuery aq = new AQuery(image);
-            AQueryHelper qh = new AQueryHelper(aq, image, listImage.get(i)).failDrawable(R.drawable.placeholder_big);
-            qh.loadImage();
-        }
+
+//         if (m_mode == MODE.ASYNC) {
+//            async(listImage);
+//        } else {
+//            syncWithAssets(listImage);
+//        }
+
         mListImage = listImage;
         if (mAdapter != null && listImage != null) {
-            if (listImage.size() < 2) {
-                mIndicator.setVisibility(GONE);
-                handler.removeCallbacks(runnable);
-            } else {
-                mIndicator.setVisibility(VISIBLE);
-                handler.postDelayed(runnable, DELAY);
-            }
+//            if (listImage.size() < 2) {
+//                mIndicator.setVisibility(GONE);
+//                handler.removeCallbacks(runnable);
+//            } else {
+//                mIndicator.setVisibility(VISIBLE);
+//                handler.postDelayed(runnable, DELAY);
+//            }
             mAdapter.setData(listImage);
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void syncWithAssets(List<String> listImage) {
+
+        for (int i = 0; i < listImage.size(); i++) {
+            ImageView image = new ImageView(Tools.getApplicationContext());
+            InputStream ims = null;
+            try {
+                ims = getResources().getAssets().open(listImage.get(i));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // load image as Drawable
+            Drawable d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            image.setImageDrawable(d);
+        }
+
+
+
+    }
+
+    private void async(List<String> listImage) {
+        m_urls = listImage;
+        for (int i = 0; i < listImage.size(); i++) {
+            ImageView image = new ImageView(Tools.getApplicationContext());
+            final AQuery aq = new AQuery(image);
+            AQueryHelper qh = new AQueryHelper(aq, image, listImage.get(i))
+                    .failDrawable(R.drawable.placeholder_big);
+            qh.loadImage();
+        }
+
     }
 
 //    private HashMap<View, String> fillData(List<String> data) {
@@ -153,19 +203,34 @@ public class AutoScrollViewPager extends RelativeLayout {
     public class PlaceSlidesFragmentAdapter extends PagerAdapter {
 
         List<String> imagesArray;
+        private MODE m_mode = MODE.ASYNC;
 
-        public PlaceSlidesFragmentAdapter(List<String> listImage) {
+        public PlaceSlidesFragmentAdapter(List<String> listImage, MODE mode) {
             imagesArray = listImage;
+            m_mode = mode;
         }
 
         public Object instantiateItem(ViewGroup container, final int position) {
             ImageView image = new ImageView(getContext());
-            image.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-            image.setAdjustViewBounds(true);
-            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            image.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+            image.setAdjustViewBounds(false);
+            image.setScaleType(ImageView.ScaleType.FIT_XY);
             final AQuery aq = new AQuery(image);
-            AQueryHelper qh = new AQueryHelper(aq, image, imagesArray.get(position)).failDrawable(R.drawable.placeholder_big);
-            qh.loadImage();
+            if (m_mode == MODE.ASYNC) {
+                AQueryHelper qh = new AQueryHelper(aq, image, imagesArray.get(position)).failDrawable(R.drawable.placeholder_big);
+                qh.loadImage();
+            } else {
+                InputStream ims = null;
+                try {
+                    ims = getResources().getAssets().open(imagesArray.get(position));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // load image as Drawable
+                Drawable d = Drawable.createFromStream(ims, null);
+                // set image to ImageView
+                image.setImageDrawable(d);
+            }
             container.addView(image, 0);
             return image;
         }

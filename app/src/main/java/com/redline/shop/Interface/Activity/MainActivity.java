@@ -1,5 +1,6 @@
 package com.redline.shop.Interface.Activity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,11 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.redline.shop.Interface.Common.ARG;
 import com.redline.shop.Interface.Fragment.CategoryFragment;
 import com.redline.shop.Interface.Fragment.MainFragment;
 import com.redline.shop.R;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import static com.redline.shop.Interface.Common.ARG.FRAGMENT.MAIN;
 
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
 
 //        getSupportFragmentManager().beginTransaction().add(R.id.stub, new FragmentCatalogPage()).commit();
 

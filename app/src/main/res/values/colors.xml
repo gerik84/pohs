@@ -27,4 +27,7 @@
     <color name="spinner_theme_color_transparent">@color/theme_color_highlight_transparent</color>
     <color name="spinner_theme_color">@color/colorPrimaryDark</color>
 
+    <color name="red">@android:color/holo_red_dark</color>
+    <color name="black">@android:color/black</color>
+
 </resources>

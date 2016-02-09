@@ -10,6 +10,7 @@ import com.androidquery.AQuery;
 import com.asdevel.cache.jsondb.AbstractCachedJsonArrayAdapter;
 import com.asdevel.cache.jsondb.JsonCacheDbHelper;
 import com.redline.shop.BuildConfig;
+import com.redline.shop.Utils.Preconditions;
 import com.redline.shop.Utils.Tools;
 
 import java.lang.reflect.Method;
@@ -32,7 +33,7 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
     public abstract String setRequestUrl();
 
     protected SQLiteDatabase getDB() {
-       return JsonCacheDbHelper.getDataBaseForUrl(mContext, setRequestUrl());
+        return JsonCacheDbHelper.getDataBaseForUrl(mContext, setRequestUrl());
     }
 
     protected void putItem(String id_field, HashMap<String, String> values) {
@@ -64,7 +65,7 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
 
     @Override
     public String[] getOrderByField() {
-        return new String[] {"category_id"};
+        return new String[]{"category_id"};
     }
 
     @Override
@@ -74,8 +75,7 @@ public abstract class ShopAuthorizationAbstractAdapter extends AbstractCachedJso
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (mResourceId == null)
-            return null;
+        Preconditions.checkNotNull(mResourceId);
 
         if (convertView == null)
             convertView = LayoutInflater.from(mContext).inflate(mResourceId, parent, false);
